@@ -2066,16 +2066,33 @@ const resList = [
   },
 ];
 
-const RestaurantCards=(props)=>{
+const RestaurantCard=(props)=>{
   //destructuring on the fly 
-  const{resName,cuisine}=props;
+  const{resData}=props;
+
+  const{
+    cloudinaryImageId,
+    name,
+    cuisines,
+    avgRating,
+    costForTwo,deliveryTime,
+  }=resData?.data;
   return(
     <div className="res-card">
-    <img className="res-logo" src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/2b4f62d606d1b2bfba9ba9e5386fabb7" alt="swigy foto" />
-      <h3>{resName}</h3>
-      <h4> {cuisine} </h4>
-      <h4>4.4 stars </h4>
-      <h4>38 minutes </h4>
+    <img className="res-logo" 
+    
+    // src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/2b4f62d606d1b2bfba9ba9e5386fabb7" 
+    src={
+          'https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_264,h_288,c_fill/' +
+          cloudinaryImageId
+        }
+    
+    alt="swigy foto" />
+      <h3> {name} </h3>
+      <h4>P{cuisines.join(',')} </h4>
+      <h4>{costForTwo}  </h4>
+      <h4>{avgRating} stars  </h4>
+      <h4>{deliveryTime} minutes </h4>
     </div>
   )
 }
@@ -2085,21 +2102,14 @@ const Body=()=>{
     <div className="body">
       <div className="search">search button</div>
       <div className="res-container">
-        <RestaurantCards  />
-        <RestaurantCards />
-        <RestaurantCards/>
-        <RestaurantCards/>
-        <RestaurantCards/>
-        <RestaurantCards/> 
-        <RestaurantCards/>
-        <RestaurantCards/>
-        <RestaurantCards/>
-        <RestaurantCards/>
-        <RestaurantCards/>
-        <RestaurantCards/>
-        <RestaurantCards/>
-        <RestaurantCards/>
-        <RestaurantCards/>
+        {/* <RestaurantCard  />
+        <RestaurantCard /> */}
+         {/* // * looping through the <RestaurentCard /> components Using Array.map() method */}
+
+       {resList.map((restaurant)=>(
+        <RestaurantCard key={restaurant.data.id} resData={restaurant} />
+       ))}
+
       </div>
     </div>
   )
@@ -2112,6 +2122,7 @@ function App() {
     
       <Header/>
       <Body/> 
+      
     </div>
   );
 }
