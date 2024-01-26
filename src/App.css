@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     border: 1px solid black;
-}
+  }
 
 .logo{
     width: 200px;
@@ -28,7 +28,8 @@
 .res-container{
     display: flex;
     flex-wrap: wrap;
-
+    justify-content:safe;
+   
 }
 
 .res-card{
@@ -37,8 +38,6 @@
     border: 1px solid black;
     padding: 5px;
     margin: 5px;
-    object-fit: contain;
-    overflow: hidden;
     background: linear-gradient(to top, red, yellow);
    
 }
@@ -54,4 +53,18 @@
 
 .res-logo{
  width: 100%;
+}
+
+.filter-btn{
+    margin: 10px;
+    cursor: pointer;
+
+}
+
+.footer{
+    font-size: 72px;
+  background: -webkit-linear-gradient(#eee, #333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: aquamarine;
+  background-clip:padding-box;
 }
